@@ -6,9 +6,45 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #60D6FE;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+form{
+  padding: 20px;
+  margin-top: 60px;
+}
+
+form button, form h5{
+  margin: 20px 0;
+}
+
+Input[type=text]:not(.browser-default):focus:not([readonly]),
+Input[type=email]:not(.browser-default):focus:not([readonly]),
+Input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+  border-color: #60D6FE;
+  box-shadow: none;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type=email]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label{
+  color: #60D6FE !important;
+}
+
+.nav{
+  background-color:#c33c54;
+}
+
+.buttons{
+  background-color: #c33c54
+}
+.buttons:hover{
+  background-color: #60D6FE;
 }
