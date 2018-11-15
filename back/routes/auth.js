@@ -69,23 +69,23 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 //     }
 //   }
 // })
-router.post('/login', (req, res, next) => {
+router.post('/login',(req, res, next) => {
   console.log('info del usuario',req.body.username)
   console.log('----------------------------------------------------')
-  passport.authenticate('local', (err, theUser) => {
+  passport.authenticate('local', (err, theUser,failureDetails) => {
     if (err) {
       res.status(403).json({ message: 'Something went wrong' })
-      return
+      return;
     }
-
+   
     if (!theUser) {
       res.status(304).json({message:"User Not found"})
-      return
+      return;
     }
-    if (theUser) {
-      res.status(200).json({message:"Already log"})
-      return
-    }
+    // if (theUser) {
+    //   res.status(200).json({message:"Already log"})
+    //   return;
+    // }
 
     req.login(theUser, (err) => {
       if (err) {
