@@ -6,3 +6,9 @@ for back folder { yarn dev} for front folder { yarn start} once this two are rea
 Once you are in the app you must login with username " human" and password " human" 
 you can walk trough the app in your dashboard pointed at up right and see your private dashboard
 add new perssonnel and edit or remove once you have finished the work just click on logout button 
+
+
+take 1: for the realization of this test I decided to use react-redux as well as having a database in Mlab to keep the user since it was not required to make a login, a seed could have been created but I preferred to use the mlab, for the design it was used materialize react as a library as well as the react-redux and a tool to check the state of redux in the browser
+import {composeWithDevTools} from 'redux-devtools-extension';
+
+the part of the edition can not do 100 since in postman it reviews and updates me but from my front I can not do it
