@@ -1,0 +1,8 @@
+Human resource test for SolRa 
+to Run : 
+you must clone o download the repo and once you have it start both folders individually 
+for back folder { yarn dev} for front folder { yarn start} once this two are ready the app must run on your default browser 
+
+Once you are in the app you must login with username " human" and password " human" 
+you can walk trough the app in your dashboard pointed at up right and see your private dashboard
+add new perssonnel and edit or remove once you have finished the work just click on logout button 
