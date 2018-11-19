@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
-import { Navbar , NavItem } from 'react-materialize'
+import {NavLink} from 'react-router-dom'
 import { connect } from 'react-redux';
 import SignedInLinks from "./SignedInLinks";
 import SignedOutLinks from "./SignedOutLinks";
 
  class Nav extends Component {
     checkUser =() => {
-        return (this.props.auth.username) ?  <SignedInLinks /> :  <SignedOutLinks />
+        return (this.props.auth.username) ?  (<SignedInLinks />) : (<SignedOutLinks />) 
    }
   render() {
     return (
-        <Navbar className="nav" brand='HumanR' right>
-          <NavItem>{this.checkUser}</NavItem>
-       </Navbar>
+    
+      <nav className="nav">
+      <div className="container">
+      <ul>
+        <li><NavLink to='/'>Human</NavLink></li>
+      </ul>
+       {this.checkUser()}
+      </div>
+    </nav>
+        
     )
   }
 }

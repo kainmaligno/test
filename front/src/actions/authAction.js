@@ -1,57 +1,42 @@
 import axios from 'axios';
-import { LOGIN_USER, SIGNUP_USER, LOGOUT_USER } from './types';
+import { LOGIN_USER,  LOGOUT_USER } from './types';
 import swal from 'sweetalert2';
 const baseUrl = `http://localhost:3000/auth/`;
 
 
 export const loginUser = (user) => (dispatch) => {
+    
     axios.post(`${baseUrl}login`,user,{withCredentials:true})
     .then(res => {
       dispatch({type:LOGIN_USER, user:res.data})
       swal({
         type: 'success',
-        title: 'Bienvenido',
+        title: 'Welcome',
         text: res.data.username
       })
       
     })
-     .catch(error => {//SI ESTA LOGEADO MANDA PRIVATE
-  
+     .catch(err => {
       swal({
         type:'error',
-        title:'algo salio mal',
-        text:error.message
+        title:'Something went wrong',
+        text:err.message
       })
      })
   }
 
-
-export const signupUser = (user) => dispatch => {
-    const form = new FormData()
-    for(let k in user){
-      form.append(k,user[k])
-    }
-    console.log(form)
-    axios.post(`${baseUrl}signup`,form,{withCredentials:true})
+  export const loggedin = () => (dispatch) => {
+    axios.get(`http://localhost:3000/auth/loggedin`,{withCredentials:true})
     .then(res => {
-      dispatch({type:SIGNUP_USER, user: res.data})
-      swal({
-        type: 'success',
-        title: 'Usuario registrado con exito',
-        text: res.data.username
-      })
+      dispatch({type:LOGIN_USER, user:res.data})
+      
     })
-    .catch(e => {
-      swal({
-        type: 'error',
-        title: 'Hubo un error con el usuario',
-        text: e.message
-      })
+    .catch(error => {
+      console.log(error)
     })
-  }
-
+  } 
   export const logoutUser = () => async dispatch => {
     await axios.get(`${baseUrl}logout`)
-    dispatch({type: LOGOUT_USER , payload:{}})
-    swal({type:'success', title:'Hasta la Proxima'})
+    dispatch({type: LOGOUT_USER , user:{}})
+    swal({type:'success', title:'See yaa!!'})
   }

@@ -8,67 +8,7 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 
-// require('../passport');
-// const checkRoles = (role) => {
-//   return function(req, res, next) {
-//     if (req.isAuthenticated() && req.user.role === role) {
-//       return next();
-//     } else {
-//       res.redirect('/');
-//     }
-//   }
-// }
 
-// const checkPersonel = checkRoles('PERSONEL');
-// const checkAdmin = checkRoles('ADMIN');
-
-// router.get('/private', ensureLoggedIn(), async (req,res,next) => {
-//   if(req.isAuthenticated()){
-//     let user = req.user
-//     res.json({user})
-//     return;
-//   }
-//   res.status(403).json({message:'Unauthorized'});
-//   if(req.user.role === 'ADMIN'){
-//     try{
-//       let user = await User.find()
-//       console.log(user)
-//       res.status(200).json({user})
-//     }catch(error){
-//    res.status(400).json({error})
-//     } 
-//   }
-//   if(req.user.role === 'PERSONEL'){
-//     try{
-//       let user = await User.find()
-//       console.log(user)
-//       res.status(200).json({user})
-//     }catch(error){
-//         res.status(400).json({error})
-//     }
-//   }
-// });
-
-// router.get('/', ensureLoggedIn(), async (req,res,next) =>{
-//   if(req.user.role === 'ADMIN'){
-//     try{
-//       let user = await User.find()
-//       console.log(user)
-//       res.status(200).json({users})
-//     }catch(error){
-//   res.status(400).json({error})
-//     } 
-//   }
-//   if(req.user.role === 'PERSONEL'){
-//     try{
-//       let user = await User.find()
-//       console.log(user)
-//       res.status(200).json({user})
-//     }catch(error){
-//         res.status(400).json({error})
-//     }
-//   }
-// })
 router.post('/login',(req, res, next) => {
   console.log('info del usuario',req.body.username)
   console.log('----------------------------------------------------')
@@ -136,9 +76,10 @@ router.get("/logout", ensureLoggedOut(), (req, res) => {
  // res.redirect("/");
 });
 
-// router.get("/logout", (req, res) => {
-//   req.logout();
-//   res.redirect("/");
-// });
+router.get('/loggedin', (req,res,next)=>{
+  return(req.isAuthenticated())? (res.status(200).json(req.user)):(res.status(403).json({
+    message: "not user"
+  }))
+})
 
 module.exports = router;

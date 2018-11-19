@@ -1,34 +1,51 @@
 import React, { Component } from 'react'
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Button, Icon,Input } from 'react-materialize'
 import {connect} from 'react-redux';
 import  * as actions from '../../actions/authAction'
 
  class Login extends Component {
   state = {
-    email: '',
-    password: ''
+    user:'',
+    username: '',
+    password: '',
+    redirect: false
   }
-
-  handleChange = (e) => {
+  handleChange = event => {
+    const { target } = event
+    const { name, value } = target
     this.setState({
-      [e.target.id]: e.target.value
-    })
+      [name]: value
+})
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    
+  handleSubmit =  async e => {
+    try{
+      e.preventDefault();
+    let user = await this.props.loginUser(this.state)
+     await this.setState({
+       user: user
+     }) 
+    }catch(error){
+         alert(error)
+    }   
   }
+ onRedirect =()=> {
+    return (this.state.user === "")? (<form className="white" onSubmit={this.handleSubmit}>
+    <h5 className="grey-text text-darken-3">Log In</h5>
+    <Input  name="username" label="Email" s={6} onChange={this.handleChange} />
+    <Input  name="password" type="password" label="password" s={12} onChange={this.handleChange}/>
+  
+    <Button type="submit" className="buttons"><Icon right>person_pin</Icon>LogIn</Button>
+    </form>): (<Redirect to ="/private"/>)
+ }
   render() {
+    
     return (
+      
       <div className="container">
-      <form className="white" onSubmit={this.handleSubmit}>
-      <h5 className="grey-text text-darken-3">Log In</h5>
-      <Input  label="Email" s={6} onChange={this.onChange} />
-      <Input type="password" label="password" s={12} onChange={this.onChange}/>
-      <Button className="buttons"><Icon right>person_pin</Icon>LogIn</Button>
-      </form>
+      {this.onRedirect()}
       </div>
+      
     )
   }
 }

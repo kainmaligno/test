@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import Nav from './Components/Nav';
-import Login from './Components/auth/Login';
+// import React, { Component } from 'react';
+// import Router from './routes';
+// import { connect } from 'react-redux';
+// import { authAction } from './actions/authAction';
 
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Nav/>
-        <Login/>
-      </div>
-    );
-  }
-}
+// class App extends Component {
+// //   componentWillMount(){
+// //     this.props.loggedin()
+// // }
+//   render() {
+//     return (
+//       <div>
+//        <Router/>
+//       </div>
+//     );
+//   }
+// }
 
-export default App;
+// export default connect(null,authAction)(App);

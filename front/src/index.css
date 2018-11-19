@@ -47,4 +47,9 @@ input[type=password]:not(.browser-default):focus:not([readonly]) + label{
 }
 .buttons:hover{
   background-color: #60D6FE;
+  
+}
+
+.btnbox{
+  padding-top: 20px;
 }

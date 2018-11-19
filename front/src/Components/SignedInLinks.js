@@ -5,12 +5,13 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authAction';
 
 const  SignedInLinks = (props) => {
-  //console.log(props)
+  
     return (
       <ul className='right'>
-        {/* <li><NavLink to='/'>Home</NavLink></li> */}
-        <li><a onClick={props.logoutUser}>Salir</a></li>
-        <li>User Dashboard<NavLink to='/private' className='btn btn-floating purple lighten-1'><Icon>account_circle</Icon></NavLink></li>
+        <li><NavLink to ="/" onClick={props.logoutUser} >Salir</NavLink></li>
+        {/* <li><a onClick={props.logoutUser}>Salir</a></li> */}
+        
+        <li>User Dashboard<NavLink to='/private' className='btn btn-floating lighten-1'><Icon>account_circle</Icon></NavLink></li>
         
       </ul>
     )

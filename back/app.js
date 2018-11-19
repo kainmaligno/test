@@ -15,7 +15,7 @@ const flash      = require("connect-flash");
     
 
 mongoose
-  .connect('mongodb://localhost/back', {useNewUrlParser: true})
+  .connect('mongodb://salemm:salemm2018@ds029267.mlab.com:29267/human', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -64,8 +64,8 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
-const personel = require('./routes/personel');
-app.use('/',personel)
+const personnel = require('./routes/personnel');
+app.use('/',personnel)
       
 const PORT = process.env.PORT || 3000
 app.listen(PORT, console.log('listen on ${PORT}'))

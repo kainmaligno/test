@@ -5,11 +5,11 @@ const personelSchema = new Schema({
   name: String,
   gender: {type: String, enum: ['Male', 'Female']},
   email: String,
-  contractDate: Date,
+  contractDate: {type:Date},
   role: {
     type: String,
-    enum : ['PERSONEL','ADMIN'],
-    default : 'PERSONEL'
+    enum : ['TEST','BASE'],
+    default : 'TEST'
        }
  }, {
   timestamps: {
@@ -18,5 +18,5 @@ const personelSchema = new Schema({
   }
 });
 
-const Personel = mongoose.model('Personel', personelSchema);
-module.exports = Personel;
+const Personnel = mongoose.model('Personnel', personelSchema);
+module.exports = Personnel;
